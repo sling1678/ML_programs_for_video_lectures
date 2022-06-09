@@ -30,7 +30,7 @@ def compute_in_sample_and_out_sample_errors(model, err_function, X_tr, y_tr, X_t
         err_out = model.test(X_te, y_te, err_function)
     return err_in, err_out
 
-def plot_all(w0, b0, w, b, err_in, err_out, X_tr, y_tr, X_te, y_te, model_name="Linear Regression", xlabel="X", ylabel="y"):
+def plot_linear_regression(w0, b0, w, b, err_in, err_out, X_tr, y_tr, X_te, y_te, model_name="Linear Regression", xlabel="X", ylabel="y", results_directory=None, filename=None):
     """
     Plot all relevant plots in one place.
     """
@@ -46,7 +46,13 @@ def plot_all(w0, b0, w, b, err_in, err_out, X_tr, y_tr, X_te, y_te, model_name="
     plt.title(model_name)
     plt.text(0.2, -4, f"E_in={err_in:5.2}, E_out={err_out:5.2}")
     plt.text(0.2, -4.8, f"N={len(X_tr)+len(X_te)}, N_tr={len(X_tr)}, N_te={len(X_te)}")
-    plt.savefig("linear_regression.png")
+    # save
+    if filename is None:
+        filename="plot_generated.png"
+    if results_directory is None:
+        results_directory = "."
+    filename = results_directory +"\\" + filename
+    plt.savefig(filename)
     plt.show()
 
 

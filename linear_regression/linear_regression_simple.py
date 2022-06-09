@@ -7,6 +7,9 @@ import utils, data
 import sys
 import time
 
+## Results Directory
+results_directory = ".\\results"
+
 
 ## MODEL
 class SimpleLinearRegressionModel(object):
@@ -44,8 +47,9 @@ def run_one_sample(num_data_points=500, w0=2.0, b0=1.0, frac_for_test=0.2):
     model.train(X_tr, y_tr)
     err_in, err_out = utils.compute_in_sample_and_out_sample_errors(model, utils.root_mean_squared_error, X_tr, y_tr, X_te, y_te)
 
-    if False:
-        utils.plot_all(w0, b0, model.w, model.b, err_in, err_out, X_tr, y_tr, X_te, y_te, model_name=model.name, xlabel="X", ylabel="y")
+    if True:
+        utils.plot_linear_regression(w0, b0, model.w, model.b, err_in, err_out, X_tr, y_tr, X_te, y_te, model_name=model.name, xlabel="X", ylabel="y", results_directory=results_directory,
+        filename="linear_regression_simple.png")
     return len(X_tr), err_in, err_out, model
 
 # Learning Curve
@@ -87,10 +91,10 @@ def generate_learning_curve(w0=2.0, b0=1.0, frac_for_test=0.2, sample_sizes=None
 
 if __name__ == "__main__":
 
-    DEBUGGING = False
+    DEBUGGING = True
     
     if DEBUGGING:
         np.random.seed(42)
-        n_tr, err_in, err_out, model = run_one_sample(100)
+        n_tr, err_in, err_out, model = run_one_sample(200)
 
-    generate_learning_curve()
+    #generate_learning_curve()
