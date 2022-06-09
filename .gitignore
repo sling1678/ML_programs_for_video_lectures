@@ -1,2 +1,3 @@
+/LR_venv/*
+/**/archive.py
 __pycache__
-archive.py

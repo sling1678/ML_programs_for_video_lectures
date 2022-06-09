@@ -57,7 +57,7 @@ def generate_learning_curve(w0=2.0, b0=1.0, frac_for_test=0.2, sample_sizes=None
     training_sample_sizes = []
     start = time.time()
 
-    sys.stdout.write(f"We have {len(sample_sizes)} samples: (at, size) \n")
+    sys.stdout.write(f"We have {len(sample_sizes)} samples: (at:size) \n")
     for j,sample_size in enumerate(sample_sizes):
         ins, outs = [], []
         for k in range(1000):
@@ -68,7 +68,7 @@ def generate_learning_curve(w0=2.0, b0=1.0, frac_for_test=0.2, sample_sizes=None
         training_sample_sizes.append(num_training_samples)
         in_sample_errors.append(np.mean(np.array(ins)))
         out_sample_errors.append(np.mean(np.array(outs)))
-        sys.stdout.write(f"{j+1}:{sample_size}-")
+        sys.stdout.write(f"({j+1}:{sample_size})-")
 
     sys.stdout.write("\n")
     end = time.time()
@@ -81,7 +81,7 @@ def generate_learning_curve(w0=2.0, b0=1.0, frac_for_test=0.2, sample_sizes=None
     ax.set_xlabel(r"Number of Training Samples")
     ax.set_ylabel(r"Root Mean Squared Error")
     plt.legend()
-    plt.savefig("learning_curve.png")
+    plt.savefig("results/learning_curve.png")
     plt.show()
 
 
