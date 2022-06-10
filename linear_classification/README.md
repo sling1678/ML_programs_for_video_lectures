@@ -1,0 +1,1 @@
+This folder will Linear Discriminant Analysis and Logistic Regression. These are linear boundary between classes method if fearures are not transformed.
