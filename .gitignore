@@ -1,4 +1,6 @@
+venv/
 LR_venv/
+**/venv
 **/archive.*
 __pycache__
 .gitignore
